@@ -1,0 +1,5 @@
+{
+  "name": "Your Health Expert",
+  "description": "An intelligent chatbot that can answer your health questions and analyze images of products to learn about their function and potential hazards.",
+  "requestFramePermissions": []
+}
