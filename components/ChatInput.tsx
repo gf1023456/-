@@ -57,13 +57,13 @@ export const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, isLoading, 
   };
 
   return (
-    <div className="bg-gray-800 border border-gray-700 rounded-xl p-2 flex flex-col gap-2 shadow-lg">
+    <div className="bg-white border border-slate-200 rounded-2xl p-2 flex flex-col gap-2 shadow-lg shadow-slate-200/50">
       {image && (
         <div className="relative w-24 h-24 rounded-lg overflow-hidden">
           <img src={image.preview} alt="Image preview" className="w-full h-full object-cover" />
           <button
             onClick={() => setImage(null)}
-            className="absolute top-1 right-1 bg-black/50 text-white rounded-full p-0.5 hover:bg-black/75 transition-colors"
+            className="absolute top-1 right-1 bg-slate-800/50 text-white rounded-full p-0.5 hover:bg-slate-800/75 transition-colors"
           >
             <XCircleIcon className="w-5 h-5" />
           </button>
@@ -72,8 +72,9 @@ export const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, isLoading, 
       <div className="flex items-end gap-2">
         <button
           onClick={() => fileInputRef.current?.click()}
-          className="p-2 text-gray-400 hover:text-blue-400 transition-colors rounded-full shrink-0"
+          className="p-2 text-slate-400 hover:text-teal-500 transition-colors rounded-full shrink-0"
           disabled={isLoading}
+          aria-label="Attach image"
         >
           <PaperclipIcon className="w-6 h-6" />
         </button>
@@ -89,14 +90,15 @@ export const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, isLoading, 
           onChange={(e) => setText(e.target.value)}
           onKeyPress={handleKeyPress}
           placeholder={placeholder}
-          className="w-full bg-transparent resize-none focus:outline-none placeholder-gray-500 text-gray-200 px-2 py-2 max-h-40"
+          className="w-full bg-transparent resize-none focus:outline-none placeholder-slate-400 text-slate-800 px-2 py-2 max-h-40"
           rows={1}
           disabled={isLoading}
         />
         <button
           onClick={handleSend}
           disabled={isLoading || (!text.trim() && !image)}
-          className="p-2 rounded-full bg-blue-600 text-white disabled:bg-gray-600 disabled:cursor-not-allowed hover:bg-blue-500 transition-colors shrink-0"
+          className="p-2 rounded-full bg-teal-500 text-white disabled:bg-slate-300 disabled:cursor-not-allowed hover:bg-teal-600 transition-colors shrink-0"
+          aria-label="Send message"
         >
           <SendIcon className="w-6 h-6" />
         </button>

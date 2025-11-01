@@ -4,7 +4,7 @@ import { ChatInput } from './components/ChatInput';
 import { ChatMessage } from './components/ChatMessage';
 import { Message, MessagePart, Role } from './types';
 import { startChat, sendMessageToChat } from './services/geminiService';
-import { GeminiIcon } from './components/Icons';
+import { HealthExpertIcon } from './components/Icons';
 import { getInitialLang, getTranslator } from './utils/i18n';
 
 const getInitialMessages = (): Message[] => {
@@ -102,26 +102,28 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="h-screen w-screen flex flex-col bg-gray-900 text-gray-100 font-sans">
-      <header className="p-4 border-b border-gray-700 shadow-md bg-gray-800/50 backdrop-blur-sm">
+    <div className="h-screen w-screen flex flex-col bg-slate-50 text-slate-800 font-sans">
+      <header className="p-4 border-b border-slate-200 bg-white/80 backdrop-blur-sm sticky top-0 z-10">
         <div className="max-w-4xl mx-auto flex items-center justify-between">
            <div className="flex items-center space-x-3">
-              <GeminiIcon className="w-8 h-8"/>
-              <h1 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+              <div className="w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center">
+                <HealthExpertIcon className="w-5 h-5 text-white"/>
+              </div>
+              <h1 className="text-xl font-semibold text-slate-800">
                 {t('title')}
               </h1>
            </div>
            <button
              onClick={handleToggleLang}
-             className="text-sm font-semibold text-gray-300 hover:text-white bg-gray-700/50 hover:bg-gray-700 px-3 py-1.5 rounded-md transition-colors"
+             className="text-sm font-semibold text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-lg transition-colors"
            >
              {t('langToggle')}
            </button>
         </div>
       </header>
       
-      <main className="flex-1 overflow-y-auto p-4">
-        <div className="max-w-4xl mx-auto space-y-6">
+      <main className="flex-1 overflow-y-auto p-4 md:p-6">
+        <div className="max-w-4xl mx-auto space-y-8">
           {messages.map((msg, index) => (
             <ChatMessage key={index} message={msg} />
           ))}
@@ -130,9 +132,9 @@ const App: React.FC = () => {
         </div>
       </main>
 
-      <footer className="p-4 bg-gray-900/80 backdrop-blur-sm">
+      <footer className="p-4 sticky bottom-0 bg-slate-50/80 backdrop-blur-sm">
         <div className="max-w-4xl mx-auto">
-          {error && <div className="text-red-400 text-center mb-2">{error}</div>}
+          {error && <div className="text-red-500 text-center mb-2">{error}</div>}
           <ChatInput 
             onSendMessage={handleSendMessage} 
             isLoading={isLoading} 
